@@ -62,7 +62,7 @@ class ProjectCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    'View tasks',
+                    context.l10n.viewTasks,
                     style: AppTextStyles.bodySmall.copyWith(
                       color: context.colorScheme.primary,
                       fontWeight: FontWeight.w600,

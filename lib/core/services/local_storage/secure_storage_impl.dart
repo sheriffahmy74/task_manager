@@ -25,5 +25,24 @@ class SecureStorageImpl implements LocalStorageService {
       _storage.read(key: ApiConstants.userDataKey);
 
   @override
-  Future<void> clearAll() => _storage.deleteAll();
+  Future<void> clearAll() async {
+    // Clear only the auth session — keep theme/locale preferences.
+    await _storage.delete(key: ApiConstants.tokenKey);
+    await _storage.delete(key: ApiConstants.userDataKey);
+  }
+
+  @override
+  Future<void> saveThemeMode(String mode) =>
+      _storage.write(key: ApiConstants.themeModeKey, value: mode);
+
+  @override
+  Future<String?> getThemeMode() =>
+      _storage.read(key: ApiConstants.themeModeKey);
+
+  @override
+  Future<void> saveLocale(String languageCode) =>
+      _storage.write(key: ApiConstants.localeKey, value: languageCode);
+
+  @override
+  Future<String?> getLocale() => _storage.read(key: ApiConstants.localeKey);
 }

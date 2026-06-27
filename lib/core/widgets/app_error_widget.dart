@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
-import '../constants/app_strings.dart';
+import '../extensions/build_context_ext.dart';
 import '../theme/app_text_styles.dart';
 import 'app_button.dart';
 
@@ -39,7 +39,7 @@ class AppErrorWidget extends StatelessWidget {
               SizedBox(
                 width: 140,
                 child: AppButton(
-                  label: AppStrings.retry,
+                  label: context.l10n.retry,
                   onPressed: onRetry,
                 ),
               ),

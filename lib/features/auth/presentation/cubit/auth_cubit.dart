@@ -58,4 +58,13 @@ class AuthCubit extends Cubit<AuthState> {
     await _logoutUseCase(const NoParams());
     emit(const Unauthenticated());
   }
+
+  /// Called by the network layer when the JWT is rejected (401).
+  /// Storage is already cleared by the interceptor — just flip the state
+  /// so GoRouter redirects to login.
+  void sessionExpired() {
+    if (state is! Unauthenticated) {
+      emit(const Unauthenticated());
+    }
+  }
 }

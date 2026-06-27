@@ -16,4 +16,25 @@ class ProjectsRepositoryImpl implements ProjectsRepository {
   Future<Either<Failure, List<ProjectEntity>>> getProjects() {
     return _handler.handle(() => _datasource.getProjects());
   }
+
+  @override
+  Future<Either<Failure, ProjectEntity>> createProject({
+    required String name,
+    required String description,
+  }) {
+    return _handler.handle(
+      () => _datasource.createProject(name, description),
+    );
+  }
+
+  @override
+  Future<Either<Failure, Unit>> updateProjectStatus({
+    required String projectId,
+    required String status,
+  }) {
+    return _handler.handle(() async {
+      await _datasource.updateProjectStatus(projectId, status);
+      return unit;
+    });
+  }
 }

@@ -1,0 +1,78 @@
+{
+  "@@locale": "en",
+
+  "appName": "Task Manager",
+
+  "login": "Login",
+  "register": "Register",
+  "logout": "Logout",
+  "email": "Email",
+  "password": "Password",
+  "fullName": "Full Name",
+  "emailHint": "Enter your email",
+  "passwordHint": "Enter your password",
+  "nameHint": "Enter your full name",
+  "noAccount": "Don't have an account? ",
+  "hasAccount": "Already have an account? ",
+  "welcomeBack": "Welcome Back",
+  "welcomeBackSub": "Sign in to continue",
+  "createAccount": "Create Account",
+  "createAccountSub": "Join us and get started",
+  "registeredSuccess": "Account created! Please login.",
+
+  "fieldRequired": "This field is required",
+  "invalidEmail": "Enter a valid email address",
+  "passwordTooShort": "Password must be at least 6 characters",
+  "nameTooShort": "Name must be at least 2 characters",
+
+  "projects": "Projects",
+  "noProjects": "No Projects Yet",
+  "noProjectsSub": "Create your first project to get started",
+  "viewTasks": "View tasks",
+  "addProject": "Add Project",
+  "projectName": "Project Name",
+  "projectNameHint": "Enter project name",
+  "description": "Description",
+  "descriptionHint": "Enter a description (optional)",
+  "projectAdded": "Project created successfully",
+
+  "tasks": "Tasks",
+  "noTasks": "No Tasks Yet",
+  "noTasksSub": "Add your first task to get started",
+  "addTask": "Add Task",
+  "taskTitle": "Task Title",
+  "taskTitleHint": "Enter task title",
+  "priority": "Priority",
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "tasksCount": "{count} tasks",
+  "@tasksCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "taskAdded": "Task added successfully",
+  "taskUpdated": "Task updated successfully",
+
+  "statusToDo": "To Do",
+  "statusInProgress": "In Progress",
+  "statusDone": "Done",
+  "statusPending": "Pending",
+  "statusCompleted": "Completed",
+  "statusActive": "Active",
+  "statusOnHold": "On Hold",
+
+  "priorityLow": "Low",
+  "priorityMedium": "Medium",
+  "priorityHigh": "High",
+
+  "profile": "Profile",
+  "logoutConfirm": "Are you sure you want to logout?",
+  "appearance": "Appearance",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "language": "Language",
+
+  "retry": "Retry"
+}

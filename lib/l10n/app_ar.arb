@@ -1,0 +1,78 @@
+{
+  "@@locale": "ar",
+
+  "appName": "مدير المهام",
+
+  "login": "تسجيل الدخول",
+  "register": "إنشاء حساب",
+  "logout": "تسجيل الخروج",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "fullName": "الاسم الكامل",
+  "emailHint": "أدخل بريدك الإلكتروني",
+  "passwordHint": "أدخل كلمة المرور",
+  "nameHint": "أدخل اسمك الكامل",
+  "noAccount": "ليس لديك حساب؟ ",
+  "hasAccount": "لديك حساب بالفعل؟ ",
+  "welcomeBack": "مرحباً بعودتك",
+  "welcomeBackSub": "سجّل الدخول للمتابعة",
+  "createAccount": "إنشاء حساب",
+  "createAccountSub": "انضم إلينا وابدأ الآن",
+  "registeredSuccess": "تم إنشاء الحساب! سجّل الدخول من فضلك.",
+
+  "fieldRequired": "هذا الحقل مطلوب",
+  "invalidEmail": "أدخل بريداً إلكترونياً صحيحاً",
+  "passwordTooShort": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+  "nameTooShort": "الاسم يجب أن يكون حرفين على الأقل",
+
+  "projects": "المشاريع",
+  "noProjects": "لا توجد مشاريع بعد",
+  "noProjectsSub": "أنشئ أول مشروع لتبدأ",
+  "viewTasks": "عرض المهام",
+  "addProject": "إضافة مشروع",
+  "projectName": "اسم المشروع",
+  "projectNameHint": "أدخل اسم المشروع",
+  "description": "الوصف",
+  "descriptionHint": "أدخل وصفاً (اختياري)",
+  "projectAdded": "تم إنشاء المشروع بنجاح",
+
+  "tasks": "المهام",
+  "noTasks": "لا توجد مهام بعد",
+  "noTasksSub": "أضف أول مهمة لتبدأ",
+  "addTask": "إضافة مهمة",
+  "taskTitle": "عنوان المهمة",
+  "taskTitleHint": "أدخل عنوان المهمة",
+  "priority": "الأولوية",
+  "submit": "إرسال",
+  "cancel": "إلغاء",
+  "tasksCount": "{count} مهمة",
+  "@tasksCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "taskAdded": "تمت إضافة المهمة بنجاح",
+  "taskUpdated": "تم تحديث المهمة بنجاح",
+
+  "statusToDo": "قيد الانتظار",
+  "statusInProgress": "قيد التنفيذ",
+  "statusDone": "مكتملة",
+  "statusPending": "معلّقة",
+  "statusCompleted": "مكتمل",
+  "statusActive": "نشط",
+  "statusOnHold": "متوقّف",
+
+  "priorityLow": "منخفضة",
+  "priorityMedium": "متوسطة",
+  "priorityHigh": "عالية",
+
+  "profile": "الملف الشخصي",
+  "logoutConfirm": "هل أنت متأكد من تسجيل الخروج؟",
+  "appearance": "المظهر",
+  "themeSystem": "النظام",
+  "themeLight": "فاتح",
+  "themeDark": "داكن",
+  "language": "اللغة",
+
+  "retry": "إعادة المحاولة"
+}

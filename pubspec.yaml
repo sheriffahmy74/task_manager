@@ -9,8 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   cupertino_icons: ^1.0.8
+
+  # Localization
+  intl: any
 
   # State Management
   flutter_bloc: ^8.1.6
@@ -34,9 +39,6 @@ dependencies:
   # Fonts
   google_fonts: ^6.2.1
 
-  # Connectivity (bonus)
-  connectivity_plus: ^6.1.2
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,6 +48,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/images/

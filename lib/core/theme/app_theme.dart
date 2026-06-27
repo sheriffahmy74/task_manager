@@ -17,7 +17,7 @@ class AppTheme {
           error: AppColors.error,
         ),
         scaffoldBackgroundColor: AppColors.background,
-        textTheme: GoogleFonts.poppinsTextTheme(),
+        textTheme: GoogleFonts.cairoTextTheme(),
         appBarTheme: const AppBarTheme(
           backgroundColor: AppColors.surface,
           foregroundColor: AppColors.textPrimary,
@@ -89,7 +89,7 @@ class AppTheme {
           error: AppColors.error,
         ),
         scaffoldBackgroundColor: AppColors.backgroundDark,
-        textTheme: GoogleFonts.poppinsTextTheme(
+        textTheme: GoogleFonts.cairoTextTheme(
           ThemeData(brightness: Brightness.dark).textTheme,
         ),
         appBarTheme: const AppBarTheme(

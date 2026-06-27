@@ -13,8 +13,18 @@ import '../../features/auth/presentation/cubit/auth_cubit.dart';
 import '../../features/projects/data/datasources/projects_remote_datasource.dart';
 import '../../features/projects/data/repositories/projects_repository_impl.dart';
 import '../../features/projects/domain/repositories/projects_repository.dart';
+import '../../features/projects/domain/usecases/create_project_usecase.dart';
 import '../../features/projects/domain/usecases/get_projects_usecase.dart';
+import '../../features/projects/domain/usecases/update_project_status_usecase.dart';
 import '../../features/projects/presentation/cubit/projects_cubit.dart';
+import '../../features/settings/presentation/cubit/settings_cubit.dart';
+import '../../features/tasks/data/datasources/tasks_remote_datasource.dart';
+import '../../features/tasks/data/repositories/tasks_repository_impl.dart';
+import '../../features/tasks/domain/repositories/tasks_repository.dart';
+import '../../features/tasks/domain/usecases/create_task_usecase.dart';
+import '../../features/tasks/domain/usecases/get_tasks_usecase.dart';
+import '../../features/tasks/domain/usecases/update_task_status_usecase.dart';
+import '../../features/tasks/presentation/cubit/tasks_cubit.dart';
 import '../network/dio_client.dart';
 import '../network/network_call_handler.dart';
 import '../network/supabase_interceptor.dart';
@@ -25,10 +35,14 @@ final sl = GetIt.instance;
 
 Future<void> initDependencies() async {
   _initCore();
+  _initSettings();
   _initAuth();
   _initProjects();
-  // _initTasks();     (Phase 9)
-  // _initProfile();   (Phase 10)
+  _initTasks();
+}
+
+void _initSettings() {
+  sl.registerLazySingleton(() => SettingsCubit(sl()));
 }
 
 void _initCore() {
@@ -90,9 +104,31 @@ void _initProjects() {
     () => ProjectsRepositoryImpl(sl(), sl()),
   );
 
-  // Use case
+  // Use cases
   sl.registerLazySingleton(() => GetProjectsUseCase(sl()));
+  sl.registerLazySingleton(() => CreateProjectUseCase(sl()));
+  sl.registerLazySingleton(() => UpdateProjectStatusUseCase(sl()));
 
   // Cubit — factory: a fresh instance per screen.
-  sl.registerFactory(() => ProjectsCubit(sl()));
+  sl.registerFactory(() => ProjectsCubit(sl(), sl()));
+}
+
+void _initTasks() {
+  // Datasource
+  sl.registerLazySingleton<TasksRemoteDatasource>(
+    () => TasksRemoteDatasourceImpl(sl()),
+  );
+
+  // Repository
+  sl.registerLazySingleton<TasksRepository>(
+    () => TasksRepositoryImpl(sl(), sl()),
+  );
+
+  // Use cases
+  sl.registerLazySingleton(() => GetTasksUseCase(sl()));
+  sl.registerLazySingleton(() => CreateTaskUseCase(sl()));
+  sl.registerLazySingleton(() => UpdateTaskStatusUseCase(sl()));
+
+  // Cubit — factory: a fresh instance per project details screen.
+  sl.registerFactory(() => TasksCubit(sl(), sl(), sl(), sl()));
 }

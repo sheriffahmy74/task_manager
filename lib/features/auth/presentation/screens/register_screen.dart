@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/app_strings.dart';
 import '../../../../core/extensions/build_context_ext.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_text_styles.dart';
@@ -54,7 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             if (state is AuthError) {
               context.showErrorSnackbar(state.message);
             } else if (state is RegisterSuccess) {
-              context.showSuccessSnackbar(AppStrings.registeredSuccess);
+              context.showSuccessSnackbar(context.l10n.registeredSuccess);
               context.go(AppRoutes.login);
             }
           },
@@ -68,40 +67,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 8),
-                    Text(AppStrings.createAccount,
+                    Text(context.l10n.createAccount,
                         style: AppTextStyles.heading1),
                     const SizedBox(height: 8),
                     Text(
-                      AppStrings.createAccountSub,
+                      context.l10n.createAccountSub,
                       style: AppTextStyles.body.copyWith(
                         color: context.colorScheme.onSurfaceVariant,
                       ),
                     ),
                     const SizedBox(height: 32),
                     AppTextField(
-                      label: AppStrings.name,
-                      hint: AppStrings.nameHint,
+                      label: context.l10n.fullName,
+                      hint: context.l10n.nameHint,
                       controller: _nameController,
                       keyboardType: TextInputType.name,
-                      validator: InputValidator.validateName,
+                      validator: (v) => InputValidator.name(v, context.l10n),
                       prefixIcon: const Icon(Icons.person_outline),
                     ),
                     const SizedBox(height: 16),
                     AppTextField(
-                      label: AppStrings.email,
-                      hint: AppStrings.emailHint,
+                      label: context.l10n.email,
+                      hint: context.l10n.emailHint,
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
-                      validator: InputValidator.validateEmail,
+                      validator: (v) => InputValidator.email(v, context.l10n),
                       prefixIcon: const Icon(Icons.email_outlined),
                     ),
                     const SizedBox(height: 16),
                     AppTextField(
-                      label: AppStrings.password,
-                      hint: AppStrings.passwordHint,
+                      label: context.l10n.password,
+                      hint: context.l10n.passwordHint,
                       controller: _passwordController,
                       obscureText: _obscure,
-                      validator: InputValidator.validatePassword,
+                      validator: (v) =>
+                          InputValidator.password(v, context.l10n),
                       prefixIcon: const Icon(Icons.lock_outline),
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -114,7 +114,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     const SizedBox(height: 32),
                     AppButton(
-                      label: AppStrings.register,
+                      label: context.l10n.register,
                       isLoading: isLoading,
                       onPressed: _submit,
                     ),
@@ -122,11 +122,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(AppStrings.hasAccount),
+                        Text(context.l10n.hasAccount),
                         GestureDetector(
                           onTap: () => context.pop(),
                           child: Text(
-                            AppStrings.loginNow,
+                            context.l10n.login,
                             style: AppTextStyles.subtitle.copyWith(
                               color: context.colorScheme.primary,
                             ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/app_strings.dart';
 import '../../../../core/extensions/build_context_ext.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_text_styles.dart';
@@ -67,30 +66,32 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: context.colorScheme.primary,
                     ),
                     const SizedBox(height: 24),
-                    Text(AppStrings.welcomeBack, style: AppTextStyles.heading1),
+                    Text(context.l10n.welcomeBack,
+                        style: AppTextStyles.heading1),
                     const SizedBox(height: 8),
                     Text(
-                      AppStrings.welcomeBackSub,
+                      context.l10n.welcomeBackSub,
                       style: AppTextStyles.body.copyWith(
                         color: context.colorScheme.onSurfaceVariant,
                       ),
                     ),
                     const SizedBox(height: 32),
                     AppTextField(
-                      label: AppStrings.email,
-                      hint: AppStrings.emailHint,
+                      label: context.l10n.email,
+                      hint: context.l10n.emailHint,
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
-                      validator: InputValidator.validateEmail,
+                      validator: (v) => InputValidator.email(v, context.l10n),
                       prefixIcon: const Icon(Icons.email_outlined),
                     ),
                     const SizedBox(height: 16),
                     AppTextField(
-                      label: AppStrings.password,
-                      hint: AppStrings.passwordHint,
+                      label: context.l10n.password,
+                      hint: context.l10n.passwordHint,
                       controller: _passwordController,
                       obscureText: _obscure,
-                      validator: InputValidator.validatePassword,
+                      validator: (v) =>
+                          InputValidator.password(v, context.l10n),
                       prefixIcon: const Icon(Icons.lock_outline),
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -103,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 32),
                     AppButton(
-                      label: AppStrings.login,
+                      label: context.l10n.login,
                       isLoading: isLoading,
                       onPressed: _submit,
                     ),
@@ -111,11 +112,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(AppStrings.noAccount),
+                        Text(context.l10n.noAccount),
                         GestureDetector(
                           onTap: () => context.push(AppRoutes.register),
                           child: Text(
-                            AppStrings.registerNow,
+                            context.l10n.register,
                             style: AppTextStyles.subtitle.copyWith(
                               color: context.colorScheme.primary,
                             ),

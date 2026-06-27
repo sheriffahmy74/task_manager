@@ -6,8 +6,9 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/cubit/auth_cubit.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
+import '../../features/home/presentation/screens/home_shell.dart';
 import '../../features/projects/domain/entities/project_entity.dart';
-import '../../features/projects/presentation/screens/projects_screen.dart';
+import '../../features/tasks/presentation/screens/project_details_screen.dart';
 import '../widgets/app_loading_widget.dart';
 
 class AppRoutes {
@@ -64,13 +65,16 @@ class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.projects,
-        builder: (context, state) => const ProjectsScreen(),
+        builder: (context, state) => const HomeShell(),
       ),
       GoRoute(
         path: AppRoutes.projectDetails,
         builder: (context, state) {
           final project = state.extra as ProjectEntity?;
-          return _ProjectDetailsPlaceholder(project: project);
+          if (project == null) {
+            return const _MissingProject();
+          }
+          return ProjectDetailsScreen(project: project);
         },
       ),
     ],
@@ -109,19 +113,15 @@ class _SplashScreen extends StatelessWidget {
   }
 }
 
-/// Temporary — replaced by the real Project Details screen in Phase 9.
-class _ProjectDetailsPlaceholder extends StatelessWidget {
-  final ProjectEntity? project;
-
-  const _ProjectDetailsPlaceholder({this.project});
+/// Shown if the details route is opened without a project (e.g. deep link).
+class _MissingProject extends StatelessWidget {
+  const _MissingProject();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(project?.title ?? 'Project')),
-      body: Center(
-        child: Text('Tasks for "${project?.title ?? ''}" — coming in Phase 9'),
-      ),
+      appBar: AppBar(),
+      body: const Center(child: Text('Project not found')),
     );
   }
 }

@@ -6,6 +6,10 @@ import '../services/local_storage/local_storage_service.dart';
 class SupabaseInterceptor extends Interceptor {
   final LocalStorageService _storage;
 
+  /// Invoked when the backend rejects the JWT (401). Wired to the AuthCubit
+  /// so an expired session cleanly redirects the user back to login.
+  void Function()? onUnauthorized;
+
   SupabaseInterceptor(this._storage);
 
   @override
@@ -24,6 +28,7 @@ class SupabaseInterceptor extends Interceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) {
     if (err.response?.statusCode == 401) {
       _storage.clearAll();
+      onUnauthorized?.call();
     }
     handler.next(err);
   }

@@ -1,42 +1,42 @@
-import '../constants/app_strings.dart';
+import '../../l10n/app_localizations.dart';
 
 class InputValidator {
   InputValidator._();
 
-  static String? validateEmail(String? value) {
+  static String? email(String? value, AppLocalizations l10n) {
     if (value == null || value.trim().isEmpty) {
-      return AppStrings.fieldRequired;
+      return l10n.fieldRequired;
     }
     final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
     if (!emailRegex.hasMatch(value.trim())) {
-      return AppStrings.invalidEmail;
+      return l10n.invalidEmail;
     }
     return null;
   }
 
-  static String? validatePassword(String? value) {
+  static String? password(String? value, AppLocalizations l10n) {
     if (value == null || value.isEmpty) {
-      return AppStrings.fieldRequired;
+      return l10n.fieldRequired;
     }
     if (value.length < 6) {
-      return AppStrings.passwordTooShort;
+      return l10n.passwordTooShort;
     }
     return null;
   }
 
-  static String? validateName(String? value) {
+  static String? name(String? value, AppLocalizations l10n) {
     if (value == null || value.trim().isEmpty) {
-      return AppStrings.fieldRequired;
+      return l10n.fieldRequired;
     }
     if (value.trim().length < 2) {
-      return AppStrings.nameTooShort;
+      return l10n.nameTooShort;
     }
     return null;
   }
 
-  static String? validateRequired(String? value) {
+  static String? required(String? value, AppLocalizations l10n) {
     if (value == null || value.trim().isEmpty) {
-      return AppStrings.fieldRequired;
+      return l10n.fieldRequired;
     }
     return null;
   }

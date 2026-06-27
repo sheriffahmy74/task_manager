@@ -26,4 +26,6 @@ class ApiConstants {
   // Storage keys
   static const String tokenKey = 'auth_token';
   static const String userDataKey = 'user_data';
+  static const String themeModeKey = 'theme_mode';
+  static const String localeKey = 'locale';
 }
