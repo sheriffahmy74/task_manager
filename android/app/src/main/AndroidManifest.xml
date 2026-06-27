@@ -1,6 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required for all network calls (Supabase Auth + REST) in release builds.
+         Flutter auto-injects this only into the debug/profile manifests, so it
+         MUST be declared here for the release APK to access the internet. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
-        android:label="task_manager"
+        android:label="Task Manager"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

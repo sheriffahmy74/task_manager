@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 import '../constants/api_constants.dart';
 
@@ -18,6 +19,24 @@ class DioClient {
       ),
     );
     dio.interceptors.add(interceptor);
+
+    // Debug-only network logging. Headers and bodies are intentionally NOT
+    // logged so the apikey, JWT and passwords never leak — and this whole
+    // block is stripped from release builds.
+    if (kDebugMode) {
+      dio.interceptors.add(
+        LogInterceptor(
+          request: true,
+          requestHeader: false,
+          requestBody: false,
+          responseHeader: false,
+          responseBody: false,
+          error: true,
+          logPrint: (obj) => debugPrint('[Dio] $obj'),
+        ),
+      );
+    }
+
     return dio;
   }
 }
